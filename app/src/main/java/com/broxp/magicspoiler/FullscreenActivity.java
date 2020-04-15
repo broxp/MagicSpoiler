@@ -66,6 +66,7 @@ public class FullscreenActivity extends Activity {
                 handle(exception);
             }
             if (exception == null) {
+                //setTitleText();
                 showImage();
                 info.setOnClickListener(new OnClickListener() {
                     @Override
@@ -181,7 +182,7 @@ public class FullscreenActivity extends Activity {
     }
 
     void showImage() {
-        setTitleText((x + 1) + "/" + max() + " loading...");
+        setTitleText((x + 1) + "/" + max() + " loading..." + (result == null ? "" : result.title));
         String current = currentCard().imageUrl;
         new DownloadImageTask() {
             @Override
@@ -202,7 +203,7 @@ public class FullscreenActivity extends Activity {
     }
 
     void status() {
-        setTitleText((x + 1) + "/" + max()); // + " " + result.title);
+        setTitleText((x + 1) + "/" + max() + " " + (result == null ? "" : result.title));
     }
 
     private int max() {
